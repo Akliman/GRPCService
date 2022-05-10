@@ -80,5 +80,5 @@ func (s *KvStorageServiceServer) Delete(ctx context.Context, req *protos.KeyRequ
 		return &protos.Empty{}, nil
 	}
 
-	return &protos.Empty{}, nil
+	return &protos.Empty{}, status.Error(13, "Storage error")
 }

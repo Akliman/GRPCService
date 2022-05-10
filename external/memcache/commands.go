@@ -31,7 +31,7 @@ func Get(key string) (string, error) {
 //parseResponse парсит ответ от memcached
 func parseResponse(resp []byte) (string, error) {
 	stringsResp := strings.Split(string(resp), "\n")
-	resultResp := stringsResp[len(stringsResp)-1]
+	resultResp := strings.TrimSuffix(stringsResp[len(stringsResp)-1], "\r")
 
 	if resultResp == "ERROR" || resultResp == "CLIENT_ERROR" {
 		return "", status.Error(2, "memcache error")
